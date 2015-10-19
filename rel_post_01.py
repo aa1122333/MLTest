@@ -12,6 +12,7 @@ posts = [open(os.path.join(DIR, f)).read() for f in os.listdir(DIR)]
 new_post = "imaging databases"
 
 import nltk.stem
+#词干处理器
 english_stemmer = nltk.stem.SnowballStemmer('english')
 
 #CountVectorizer  该类会将文本中的词语转换为词频矩阵
@@ -35,7 +36,7 @@ class StemmedTfidfVectorizer(TfidfVectorizer):
 vectorizer = StemmedTfidfVectorizer(
     min_df=1, stop_words='english', decode_error='ignore')
 
-print("sort"+sorted(vectorizer.get_stop_words())[0:20])
+print(sorted(vectorizer.get_stop_words())[0:100])
 print(vectorizer)
 #%%
 X_train = vectorizer.fit_transform(posts)#fit_transform转换为相符的矩阵?
